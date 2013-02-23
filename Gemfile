@@ -4,8 +4,15 @@ gem 'rails', '3.2.12'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-group :development do
+group :development, :test do
   gem 'sqlite3', '1.3.5'
+  gem 'rspec-rails', '2.11.0'
+  gem 'annotate', '2.5.0'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'factory_girl_rails'
 end
 
 group :production do
@@ -26,6 +33,9 @@ group :assets do
 end
 
 gem 'jquery-rails', '2.0.2'
+gem 'faker', '1.0.1'
+gem 'mail'
+gem 'valid_email' # https://github.com/hallelujah/valid_email
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
