@@ -1,4 +1,14 @@
 <% provide(:title, 'New Expense') %>
 <h1>New Expense</h1>
-<p>Find me in app/views/expenses/new.html.erb</p>
+<div class="row">
+  <div class="span6">
+    <%= form_for @expense do |f|%>
+        <%= f.text_field :name, placeholder: 'Expense Name' %>
+
+        <%= f.text_field :amount, placeholder: 'Expense Amount' %>
+
+        <%= f.submit 'Add Expense', class: 'btn btn-large btn-primary' %>
+    <% end %>
+  </div>
+</div>
 
