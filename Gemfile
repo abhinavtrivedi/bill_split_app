@@ -37,6 +37,8 @@ gem 'faker', '1.0.1'
 gem 'mail'
 gem 'valid_email' # https://github.com/hallelujah/valid_email
 
+gem 'bootstrap-sass', '2.1' # bootstrap
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

@@ -1,4 +1,6 @@
 BillSplitApp::Application.routes.draw do
+  get "expenses/new"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
