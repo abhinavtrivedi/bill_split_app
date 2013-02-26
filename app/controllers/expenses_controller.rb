@@ -14,7 +14,7 @@ class ExpensesController < ApplicationController
   end
 
   def index
-    @expeses = Expense.all
+    @expenses = Expense.all
   end
 
 

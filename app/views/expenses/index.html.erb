@@ -1,1 +1,30 @@
 <% provide(:title, 'My Expenses') %>
+<h1>My Expenses</h1>
+<div class="row">
+  <% if @expenses.any? %>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Amount</th>
+          <th>Added on</th>
+          <th>Contributors</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @expenses.each do |expense| %>
+            <tr class="info">
+              <td><%= expense.id %></td>
+              <td><%= expense.name %></td>
+              <td><%= expense.amount %></td>
+              <td><%= expense.created_at.to_date %></td>
+              <td>TODO</td>
+              <td>TODO</td>
+            </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>

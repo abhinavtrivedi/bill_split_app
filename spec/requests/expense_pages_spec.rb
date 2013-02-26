@@ -51,8 +51,19 @@ describe "Expenses" do
   end
 
   describe "Show Expenses" do
-    before {visit expenses_path}
+    before do
+      @expenses = FactoryGirl.create_list(:expense, 5)
+      visit expenses_path
+    end
 
     it {should have_selector 'title', text: page_title('My Expenses')}
+    it {should have_selector 'h1', text: 'My Expenses'}
+    it
+    it "should display all expenses in the database" do
+      @expenses.each do |expense|
+        page.should have_content(expense.name)
+        page.should have_content(expense.amount)
+      end
+    end
   end
 end
