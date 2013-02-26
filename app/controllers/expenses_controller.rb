@@ -12,4 +12,10 @@ class ExpensesController < ApplicationController
       render 'new'
     end
   end
+
+  def index
+    @expeses = Expense.all
+  end
+
+
 end
