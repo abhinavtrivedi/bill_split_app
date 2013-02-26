@@ -49,4 +49,10 @@ describe "Expenses" do
       end
     end
   end
+
+  describe "Show Expenses" do
+    before {visit expenses_path}
+
+    it {should have_selector 'title', text: page_title('My Expenses')}
+  end
 end
