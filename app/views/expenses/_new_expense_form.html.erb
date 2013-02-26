@@ -1,0 +1,16 @@
+<% @errors = @expense.errors %>
+<div class="row">
+  <div class="span6">
+    <%= form_for @expense do |f|%>
+        <%= f.text_field :name, placeholder: 'Expense Name' %>
+        <div class="input-prepend">
+          <span class="add-on">$</span>
+          <%= f.text_field :amount, placeholder: 'Expense Amount' %>
+        </div>
+
+
+
+        <%= f.submit 'Add Expense', class: 'btn btn-large btn-primary' %>
+    <% end %>
+  </div>
+</div>

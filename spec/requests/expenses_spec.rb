@@ -17,5 +17,36 @@ describe "Expenses" do
 
       it {should have_button 'Add Expense'}
     end
+
+    describe "Creating new expense" do
+      let(:expense){FactoryGirl.build(:expense)}
+      before do
+        fill_in "expense_name", with: expense.amount
+        fill_in "expense_amount", with: expense.amount
+      end
+      describe "without name" do
+        before {fill_in "expense_name", with: ""}
+        it "should not save the expense" do
+          expect{click_button 'Add Expense'}.not_to change(Expense, :count)
+        end
+      end
+      describe "without amount" do
+        before {fill_in "expense_amount", with: ""}
+        it "should not save the expense" do
+          expect{click_button 'Add Expense'}.not_to change(Expense, :count)
+        end
+      end
+      describe "with non-numeric amount" do
+        before {fill_in "expense_amount", with: "non-numeric"}
+        it "should not save the expense" do
+          expect{click_button 'Add Expense'}.not_to change(Expense, :count)
+        end
+      end
+      describe "with valid entried" do
+        it "should save the expense" do
+          expect{click_button 'Add Expense'}.to change(Expense, :count).by(1)
+        end
+      end
+    end
   end
 end
