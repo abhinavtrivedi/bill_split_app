@@ -1,5 +1,9 @@
 BillSplitApp::Application.routes.draw do
+
   resources :expenses
+  resources :users, only: [:new, :index, :create]
+
+  match '/register', to: 'users#new'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
