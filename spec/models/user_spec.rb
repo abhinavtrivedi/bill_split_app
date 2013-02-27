@@ -66,6 +66,20 @@ describe User do
           end
         end
       end
+      context 'is already taken' do
+        let(:dup_user) {FactoryGirl.build(:user, email: user.email)}
+        subject {dup_user}
+        it {should_not be_valid}
+      end
+
+      context 'is already taken with different case' do
+        before do
+          dup_user = user.dup
+          dup_user.email = user.email.upcase
+          dup_user.save
+        end
+        it {should_not be_valid}
+      end
     end
 
 
