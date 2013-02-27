@@ -21,6 +21,10 @@ describe User do
   it {should respond_to :first_name}
   it {should respond_to :last_name}
   it {should respond_to :email}
+  it {should respond_to :password_digest}
+  it {should respond_to :password}
+  it {should respond_to :password_confirmation}
+  it {should respond_to :authenticate}
 
   it {should be_valid}
 
@@ -73,15 +77,60 @@ describe User do
       end
 
       context 'is already taken with different case' do
+        let(:user_with_email) {FactoryGirl.build :user}
         before do
-          dup_user = user.dup
-          dup_user.email = user.email.upcase
+          dup_user = user_with_email.dup
+          dup_user.email = user_with_email.email.upcase
           dup_user.save
         end
+        subject {user_with_email}
         it {should_not be_valid}
       end
     end
 
+    context 'password' do
+      context "is nil" do
+        before {user.password = nil}
+        it {should_not be_valid}
+      end
+      context 'is blank' do
+        before {user.password = " "}
+        it {should_not be_valid}
+      end
+      context 'is shorter than 8 characters' do
+        before {user.password = "123456"}
+        it {should_not be_valid}
+      end
+    end
+
+    context 'password_confirmation' do
+      context "is nil" do
+        before {user.password_confirmation = nil}
+        it {should_not be_valid}
+      end
+      context 'is blank' do
+        before {user.password_confirmation = " "}
+        it {should_not be_valid}
+      end
+    end
+
+    context 'password and password_confirmation do not match' do
+      before {user.password_confirmation = user.password.upcase}
+      it {should_not be_valid}
+    end
+
+    context 'user signs in' do
+      let(:valid_user) {User.find_by_email user.email}
+      context 'with valid password' do
+        it {should == valid_user.authenticate(user.password)}
+      end
+
+      context 'with invalid password' do
+        let(:invalid_user){valid_user.authenticate("invalid_password")}
+        it {should_not == invalid_user}
+        specify {invalid_user.should be_false}
+      end
+    end
 
   end
 end
