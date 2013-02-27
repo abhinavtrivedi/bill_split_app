@@ -1,11 +1,4 @@
-Markdown:
 [ ![Codeship Status for abhinavtrivedi/bill_split_app](https://www.codeship.io/projects/01b52d90-6272-0130-f115-1231392f4138/status?branch=master)](https://www.codeship.io/projects/1656)
-
-Textile:
-"!https://www.codeship.io/projects/01b52d90-6272-0130-f115-1231392f4138/status?branch=master!":https://www.codeship.io/projects/1656
-
-Rdoc:
-Codeship Status for {abhinavtrivedi/bill_split_app}[https://www.codeship.io/projects/1656] https://www.codeship.io/projects/01b52d90-6272-0130-f115-1231392f4138/status?branch=master
 
 == Welcome to Rails
 
